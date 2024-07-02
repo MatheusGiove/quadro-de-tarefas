@@ -32,8 +32,20 @@ header > h1 {
   border-radius: .5rem;
 }
 
+.column.highligth {
+  background-color: #deebff;
+  border: 2px solid #2482ff;
+}
+
+.title {
+  color: #4d5c76;
+  font-size: 1rem;
+  font-weight: 700;
+  margin: 1rem;
+}
+
 .cards {
-  padding: .25rem;
+  padding: 0 .25rem .25rem .25rem;
   height: 100%;
   border-radius: .25rem;
 }
@@ -50,11 +62,8 @@ header > h1 {
   font-weight: 500;
   color: #4d5c76;
   margin-bottom: .5rem;
-}
-
-.highligth {
-  background-color: #deebff;
-  border: 2px solid #2482ff;
+  display: flex;
+  align-items: center;
 }
 
 

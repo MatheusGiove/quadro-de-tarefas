@@ -3,13 +3,27 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>A volta da programação</title>
+  <title>Quadro de Tarefas</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <main>
-    
+    <header>
+      <h1>Quadro de Tarefas</h1>
+    </header>
+    <section class="board">
+      <section class="column">
+        <h2 class="title">TO DO</h2>
+        <article data-dropzone="true" class="cards">
+        </article>
+      </section>
+      <section class="column">
+        <h2 class="title">DONE</h2>
+        <article data-dropzone="true" class="cards">
+        </article>
+      </section>
+    </section>
   </main>
 </body>
-<script src="script.js"></script>
+<script src="./dist/script.js"></script>
 </html>
