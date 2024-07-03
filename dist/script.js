@@ -1,7 +1,6 @@
 "use strict";
-const cardBoard = document.querySelectorAll(".cards");
+const cardBoard = document.querySelectorAll(".task-list");
 const tasks = document.querySelectorAll(".task");
-const column = document.querySelectorAll(".column");
 let draggedTask;
 function isElement(element) {
     if (element instanceof HTMLElement)
@@ -21,7 +20,9 @@ function dragOver(e) {
 function dragEnter(e) {
     if (isElement(e.target)) {
         const column = e.target.parentElement;
-        column?.classList.add("highligth");
+        if (column) {
+            column.classList.add("highligth");
+        }
     }
 }
 function dragLeave(e) {
@@ -37,6 +38,7 @@ function drop({ target }) {
         target.parentElement?.classList.remove("highligth");
         if (target.dataset.dropzone === "true") {
             target.appendChild(draggedTask);
+            draggedTask = null;
         }
     }
 }
@@ -46,15 +48,17 @@ function createCard({ target }) {
             const task = document.createElement("section");
             task.classList.add("task");
             task.draggable = true;
-            task.contentEditable = "true";
-            task.addEventListener("focusout", () => {
-                task.contentEditable = "false";
+            const text = document.createElement("p");
+            task.appendChild(text);
+            text.contentEditable = "true";
+            text.addEventListener("focusout", () => {
+                text.contentEditable = "false";
                 if (!task.textContent) {
                     task.remove();
                 }
             });
             target.appendChild(task);
-            task.focus();
+            text.focus();
             task.addEventListener("dragstart", dragStart);
         }
     }
