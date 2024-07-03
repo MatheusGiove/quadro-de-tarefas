@@ -1,10 +1,13 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap");
-
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Inter", sans-serif;
+  font-family: Helvetica, Arial, sans-serif;
+}
+
+body {
+  background-color: #1e1e1e;
+  color: #e1e1e6;
 }
 
 main {
@@ -13,57 +16,89 @@ main {
 }
 
 header > h1 {
-  color: #182b4d;
-  font-size: 2rem;
-  font-weight: 600;
-  margin-top: .5rem;
-}
-
-.board {
+  font-size: 3rem;
   display: flex;
+  justify-content: center;
+  margin: 1rem 0;
+}
+
+#board {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 1rem;
-  margin-top: 3rem;
+  padding-top: 1rem;
 }
 
-.column {
-  width: 100%;
-  height: 100dvh;
-  background-color: #f4f5f7;
-  border-radius: .5rem;
+.task-column {
+  background: #2c2c2c;
+  padding: 1rem 0;
+  border-radius: 1.5rem;
 }
 
-.column.highligth {
-  background-color: #deebff;
+.task-column.highligth {
   border: 2px solid #2482ff;
 }
 
 .title {
-  color: #4d5c76;
-  font-size: 1rem;
-  font-weight: 700;
-  margin: 1rem;
+  display: flex;
+  justify-content: center;
+  font-size: 1.5rem;
+  padding: 0 1rem;
 }
 
-.cards {
-  padding: 0 .25rem .25rem .25rem;
+.task-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1rem;
+  min-height: 100dvh;
   height: 100%;
-  border-radius: .25rem;
+  position: relative;
+}
+
+.task-list.initial::before {
+  content: "Double click to add a new task";
+  position: absolute;
+  top: 25%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: .8rem;
+  color: #e1e1e630;
+}
+
+.task-list .task:last-child {
+  margin-bottom: 5rem;
+}
+
+#to-do .task {
+  background: #8cff91;
+}
+
+#progress .task {
+  background: #ffe68b;
+}
+
+#done .task {
+  background: #ff8b8b;
 }
 
 .task {
-  width: 100%;
-  min-height: 4rem;
-  background-color: #ffffff;
-  border-radius: .25rem;
-  border: 1px solid #dfe1e6;
-  box-shadow: 0 2px 2px #dfe1e6;
-  padding: .75rem 1rem;
-  font-size: .9rem;
-  font-weight: 500;
-  color: #4d5c76;
-  margin-bottom: .5rem;
-  display: flex;
-  align-items: center;
+  padding: 1.5rem 1rem;
+  border-radius: 8px;
+  z-index: 1;
+  cursor: grab;
+  transition: all 0.3s ease;
 }
 
+.task > p {
+  max-width: 100%;
+  word-wrap: break-word;
+  font-family: Helvetica, Arial, sans-serif;
+  font-weight: 400;
+  color: #1e1e1e;
+}
 
+.task > p:focus {
+  outline: none;
+}

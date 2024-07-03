@@ -1,6 +1,5 @@
-const cardBoard = document.querySelectorAll<HTMLElement>(".cards");
+const cardBoard = document.querySelectorAll<HTMLElement>(".task-list");
 const tasks = document.querySelectorAll<HTMLElement>(".task");
-const column = document.querySelectorAll<HTMLElement>(".column");
 
 let draggedTask: HTMLElement | null;
 
@@ -23,7 +22,9 @@ function dragOver(e: DragEvent) {
 function dragEnter(e: DragEvent) {
   if (isElement(e.target)) {
     const column = e.target.parentElement;
-    column?.classList.add("highligth");
+    if (column) {
+      column.classList.add("highligth");
+    }
   }
 }
 
@@ -41,6 +42,7 @@ function drop({ target }: DragEvent) {
     target.parentElement?.classList.remove("highligth");
     if (target.dataset.dropzone === "true") {
       target.appendChild(draggedTask);
+      draggedTask = null;
     }
   }
 }
@@ -51,17 +53,19 @@ function createCard({ target }: MouseEvent) {
       const task = document.createElement("section");
       task.classList.add("task");
       task.draggable = true;
-      task.contentEditable = "true";
+      const text = document.createElement("p");
+      task.appendChild(text);
+      text.contentEditable = "true";
 
-      task.addEventListener("focusout", () => {
-        task.contentEditable = "false";
+      text.addEventListener("focusout", () => {
+        text.contentEditable = "false";
         if (!task.textContent) {
           task.remove();
         }
       });
 
       target.appendChild(task);
-      task.focus();
+      text.focus();
       task.addEventListener("dragstart", dragStart);
     }
   }

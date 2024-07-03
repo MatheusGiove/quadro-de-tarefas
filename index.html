@@ -1,29 +1,40 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Quadro de Tarefas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <title>Quadro de Tarefas</title>
 </head>
+
 <body>
   <main>
     <header>
       <h1>Quadro de Tarefas</h1>
     </header>
-    <section class="board">
-      <section class="column">
-        <h2 class="title">TO DO</h2>
-        <article data-dropzone="true" class="cards">
+    <section id="board">
+      <section class="task-column" id="to-do">
+        <h2 class="title">To Do</h2>
+        <article data-dropzone="true" class="task-list initial">
         </article>
       </section>
-      <section class="column">
-        <h2 class="title">DONE</h2>
-        <article data-dropzone="true" class="cards">
+      <section class="task-column" id="progress">
+        <h2 class="title">In progress</h2>
+        <article data-dropzone="true" class="task-list initial">
+        </article>
+      </section>
+      <section class="task-column" id="done">
+        <h2 class="title">Done</h2>
+        <article data-dropzone="true" class="task-list initial">
         </article>
       </section>
     </section>
   </main>
 </body>
-<script src="./dist/script.js"></script>
+<script type="module" src="./dist/script.js"></script>
+
 </html>
